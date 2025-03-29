@@ -10,11 +10,11 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
-import Register from "./Register";
-import Login from "./Login";
+import Register from "../microfrontend/auth/src/components/Register"; //Меняю путь
+import Login from "../microfrontend/auth/src/components/Login"; //Меняю путь
 import InfoTooltip from "./InfoTooltip";
 import ProtectedRoute from "./ProtectedRoute";
-import * as auth from "../utils/auth.js";
+import * as auth from "../microfrontend/auth/src/utils/auth.js"; //Меняю путь
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =
