@@ -1,0 +1,22 @@
+@import url('__descriptionrofile__description.css');
+@import url('__add-buttonrofile__add-button.css');
+@import url('__edit-buttonrofile__edit-button.css');
+@import url('__inforofile__info.css');
+@import url('__titlerofile__title.css');
+@import url('__imagerofile__image.css');
+
+.profile {
+  font-family: 'Inter', Arial, sans-serif;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 36px 0;
+}
+
+@media screen and (max-width: 480px) {
+  .profile {
+    padding: 43px 0;
+    flex-direction: column;
+    text-align: center;
+  }
+}

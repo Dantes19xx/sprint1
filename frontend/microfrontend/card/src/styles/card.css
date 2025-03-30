@@ -1,0 +1,18 @@
+@import url('__descriptionard__description.css');
+@import url('__imageard__image.css');
+@import url('__like-buttonard__like-button.css');
+@import url('__like-buttonis-active/card__like-button_is-active.css');
+@import url('__delete-buttonard__delete-button.css');
+@import url('__delete-buttonhidden/card__delete-button_hidden.css');
+@import url('__delete-buttonvisible/card__delete-button_visible.css');
+@import url('__titleard__title.css');
+@import url('__like-countard__like-count.css');
+
+.card {
+  font-family: 'Inter', Arial, sans-serif;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
