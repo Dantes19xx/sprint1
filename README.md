@@ -11,20 +11,99 @@
 
 В данном монолите можно выделить следующие домены: 
 -host
-    -Основное приложение main, в файле конфигурации WMF которого будут находится иморты remotes а так же все его зависимости,
+    -Основное приложение main, в файле конфигурации WMF которого будут находится импорты remotes а так же всех его зависимостей,
     точки входа и т.д.
 -remotes
     -Авторизация (auth); 
     -Работа с профилем пользователя. Создание/редактирование (profile); 
     -Загрузка и удаление фото (card);
 
-Моя структура будет выглядть следующим образом: 
+Моя структура будет выглядеть следующим образом: 
     /auth 
         /src 
             /components 
+                InfoTooltip.js
                 Login.js 
                 Register.js 
-            /styles тут лежат все стили, которые испольщуются компонентами Login и Register 
+                PopupWithForm.js
+                ProtectedRoute.js
+                Register.js
+            /contexts
+                CurrentUserContext.js
+            /styles тут лежат все стили, которые используются микрофронтендом auth 
+            /utils
+                api.js
+                auth.js
+            serviceWorker.js
+            setupTests.js
         webpack.config.js 
         package.json
+
+    /card
+        /src
+            /components
+                AddPlacePopup.js
+                Card.js
+                ImagePopup.js
+                PopupWithForm.js
+                ProtectedRoute.js
+            /contexts
+                 CurrentUserContext.js
+            /styles тут лежат все стили, которые используются микрофронтендом card
+            /utils
+                api.js
+            serviceWorker.js
+            setupTests.js
+        webpack.config.js 
+        package.json
+
+    /main
+        /images - изображения проекта
+        /public - лого и фавиконки
+        /src
+            /components
+                App.js
+                Footer.js
+                Header.js
+                Main.js
+                ProtectedRoute.js
+            /contexts
+                CurrentUserContext.js
+            /styles тут лежат все стили, которые используются микрофронтендом main
+            /utils
+                api.js
+            serviceWorker.js
+            setupTests.js
+        /vendor - шрифты, общие стили тегов
+        index.css
+        index.js
+        index.spec.js
+        webpack.config.js 
+        package.json
+
+    /profile
+        /src
+            /components
+                EditAvatarPopup.js
+                EditProfilePopup.js
+                ProtectedRoute.js
+            /contexts
+                CurrentUserContext.js
+            /styles тут лежат все стили, которые используются микрофронтендом profile
+            /utils
+                api.js
+            serviceWorker.js
+            setupTests.js
+        webpack.config.js 
+        package.json
+        
+Я сделал такую декомпозицию. Воспользовался стратегиями разделения "вертикальная нарезка" и "изоляция".
+Вертикальная нарезка тут целесообразна, потому что поместив блоки (стили, формы, бизнес-логику) в каждый отдельный микрофронтенд,
+даже при наличии дублей одного и того же стиля и/или формы в различных микрофронтендах, гарантирует изоляцию, в том числе и зависимостей.
+Это позволит разрабатывать, улучшать, обновлять микрофронтенды, независимо друг от друга.
+Такая стратегия позволит избежать непредвидимых ошибок при внесении правок в код каждого отдельного модуля.
+
+Из методов интеграции решения подойдет Run time. Проект разделен, и теперь можно разворачивать и обновлять все независимо.
+Запуск будет производиться из main, общение между модулями будет производиться путем правильно настроенной конфигурации WMF
+
 
